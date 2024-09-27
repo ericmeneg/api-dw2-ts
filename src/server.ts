@@ -1,11 +1,12 @@
 import express, {Request, Response} from "express";
+import routes from './routes'
 
 const app = express()
 const PORT = 3000
 
-app.get('/',(req: Request,res: Response)=>{
-    res.send('Hello World')
-})
+app.use(express.json())
+
+app.use('/api', routes)
 
 app.listen(PORT,()=>{
     console.log(`Rodando em http://localhost:${PORT}`)
