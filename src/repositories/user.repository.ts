@@ -15,3 +15,7 @@ export const createUser = async (data: CreateUserDTO) => {
 export const findUserByEmail = async (email: string) => {
     return User.findFirst({where: {email}})
 }
+
+export const findAllUsers = async () => {
+    return User.findMany()
+}
