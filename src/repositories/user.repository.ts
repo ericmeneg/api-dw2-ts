@@ -1,5 +1,5 @@
 import User from '../entities/user.entity'
-import { CreateUserDTO } from '../dtos/user.dto'
+import { CreateUserDTO, UpdateUserDTO } from '../dtos/user.dto'
 
 export const createUser = async (data: CreateUserDTO) => {
     return await User.create({data})
@@ -21,6 +21,6 @@ export const findUserById = async (id: number) => {
     return User.findFirst({where: {id}})
 }
 
-export const updateUser = async (id: number, data: CreateUserDTO) => {
+export const updateUser = async (id: number, data: UpdateUserDTO) => {
     return User.update({where: {id}, data}) // data é uma abreviação de data:data, mesmo caso da função deleteUser
 }

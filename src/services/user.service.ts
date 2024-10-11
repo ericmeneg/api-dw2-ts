@@ -1,5 +1,5 @@
 import {createUser, deleteUser, findAllUsers, findUserByEmail, findUserById, updateUser} from '../repositories/user.repository'
-import { CreateUserDTO } from '../dtos/user.dto'
+import { CreateUserDTO, UpdateUserDTO } from '../dtos/user.dto'
 
 export const createUserService = async (data: CreateUserDTO) => {
     const user = await findUserByEmail(data.email)
@@ -19,7 +19,7 @@ export const deleteUserService = async (id: number) => {
     return await deleteUser(id)
 }
 
-export const updateUserService = async (id:number, data: CreateUserDTO) => {
+export const updateUserService = async (id:number, data: UpdateUserDTO) => {
     const user = await findUserById(id)
 
     if (!user) throw new Error('Usuário não encontrado')
