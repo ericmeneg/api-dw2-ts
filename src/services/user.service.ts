@@ -1,14 +1,9 @@
 import {createUser, deleteUser, findAllUsers, findUserByEmail, findUserById, updateUser} from '../repositories/user.repository'
-
-interface CreateUserDTO {
-    name: string,
-    email: string,
-    password: string,
-}
+import { CreateUserDTO } from '../dtos/user.dto'
 
 export const createUserService = async (data: CreateUserDTO) => {
     const user = await findUserByEmail(data.email)
-    if(user) throw new Error('E-mail já cadastrado!')
+    if (user) throw new Error('E-mail já cadastrado!')
     return await createUser(data)
 }
 
