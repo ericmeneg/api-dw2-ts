@@ -11,18 +11,18 @@ export const createTask = async (req: Request, res: Response) => {
 }
 
 export const findAllTasks = async (req: Request, res: Response) => {
-    const tasks = findAllTasksService()
+    const tasks = await findAllTasksService()
     return res.status(200).json(tasks)
 }
 
 export const findTaskById = async (req: Request, res: Response) => {
-    const task = findTaskByIdService(Number(req.params.id))
+    const task = await findTaskByIdService(Number(req.params.id))
     return res.status(200).json(task)
 }
 
 export const updateTask = async (req: Request, res: Response) => {
     try{
-        const task = updateTaskService(Number(req.params.id),req.body)
+        const task = await updateTaskService(Number(req.params.id),req.body)
         return res.status(200).json(task)
     } catch (error) {
         return res.status(400).json(error)

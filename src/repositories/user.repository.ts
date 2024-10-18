@@ -24,3 +24,7 @@ export const findUserById = async (id: number) => {
 export const updateUser = async (id: number, data: UpdateUserDTO) => {
     return User.update({where: {id}, data}) // data é uma abreviação de data:data, mesmo caso da função deleteUser
 }
+
+export const findUserByIdWithTasks = async (id: number) => {
+    return User.findFirst({where: {id}, include: {task: true}})
+}
