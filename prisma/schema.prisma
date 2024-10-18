@@ -18,4 +18,13 @@ model User {
   name     String
   email    String @unique
   password String
+  task Task[] //essa linha não vira um atributo no banco de dados, ela serve apenas para dizer a ORM sobre o relacionamento
+}
+
+model Task {
+  id Int @id @default(autoincrement())
+  title String
+  completed Boolean @default(false)
+  userId Int
+  user User @relation(fields: [userId], references: [id]) //mesma coisa que task em User
 }
